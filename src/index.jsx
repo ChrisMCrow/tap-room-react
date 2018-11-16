@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import { HashRouter } from 'react-router-dom';
+import { AppContainer } from 'react-hot-loader';
 
 
 const render = (Component) => {
   ReactDOM.render(
-    <HashRouter>
-      <Provider store={store}>
+    <AppContainer>
+      <HashRouter>
         <Component/>
-      </Provider>
-    </HashRouter>,
+      </HashRouter>
+    </AppContainer>,
     document.getElementById('react-app-root')
   );
 };
