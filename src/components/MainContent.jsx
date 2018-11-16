@@ -1,5 +1,7 @@
 import React from 'react';
 import Keg from './Keg';
+import AddForm from './AddForm';
+import { Switch, Route, Link } from 'react-router-dom';
 
 const masterKegList = [
   {
@@ -100,6 +102,16 @@ function MainContent() {
           )}
         </tbody>
       </table>
+      <Link to='/add'>
+        <button className='btn'>Add New Keg</button>
+      </Link>
+      <Link to='/happyHour'>
+        <button className='btn'>Start Happy Hour</button>
+      </Link>
+      <Switch>
+        <Route exact path='/'/>
+        <Route path='/add' component={AddForm}/>
+      </Switch>
     </div>
   );
 }
