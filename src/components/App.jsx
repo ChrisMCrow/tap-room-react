@@ -18,7 +18,7 @@ function App() {
         }
         .jumbotron {
           margin-top: 20px;
-          margin-bottom: 0px;
+          margin-bottom: 40px;
           text-transform: uppercase;
           font-size: 50px;
           text-shadow: 2px 2px 2px black;

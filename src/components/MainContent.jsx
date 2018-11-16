@@ -50,12 +50,31 @@ const masterKegList = [
     price: '6',
     remaining: '58'
   }
-]
+];
 
 
 function MainContent() {
   return(
     <div className='content'>
+      <style jsx>{`
+        .content {
+          padding: 0 10px 10px 10px;
+          color: rgb(196, 179, 179);
+          background-color: rgba(0, 0, 0, .7);
+          border: 1px solid rgb(196, 179, 179);
+          border-radius: 5px;
+          box-shadow: 2px 2px 5px rgb(58, 58, 58);
+        }
+        th {
+          font-family: 'Lora', sans-serif;
+          font-weight: 700;
+        }
+        .table thead th {
+          border-top: none;
+        }
+      
+      
+      `}</style>
       <table className='table'>
         <thead className='thead'>
           <tr className='table-headers'>
