@@ -5,20 +5,7 @@ function Keg(props) {
   return(
     <tr>
       <style jsx>{`
-        .btn {
-          border-radius: 1px;
-          border: 1px solid rgb(196, 179, 179);
-          color: rgb(196, 179, 179);
-          background-color: black;
-          font-family: 'Lora', sans-serif;
-          font-weight: 700;
-        }
-      
-      .btn:hover {
-          background-color: rgba(206, 121, 23, 0.7);
-          border: 1px solid rgb(196, 179, 179);
-        }
-      
+  
       `}</style>
       <td>{props.name} <em>({props.description})</em></td>
       <td>{props.brewer}</td>

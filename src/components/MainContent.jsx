@@ -1,7 +1,9 @@
 import React from 'react';
 import Keg from './Keg';
 import AddForm from './AddForm';
-import { Switch, Route, Link } from 'react-router-dom';
+import TableButtons from './TableButtons';
+import TableButtonsHappy from './TableButtonsHappy';
+import { Switch, Route } from 'react-router-dom';
 
 const masterKegList = [
   {
@@ -54,7 +56,6 @@ const masterKegList = [
   }
 ];
 
-
 function MainContent() {
   return(
     <div className='content'>
@@ -62,7 +63,7 @@ function MainContent() {
         .content {
           padding: 0 10px 10px 10px;
           color: rgb(196, 179, 179);
-          background-color: rgba(0, 0, 0, .7);
+          background-color: rgba(0, 0, 0, .8);
           border: 1px solid rgb(196, 179, 179);
           border-radius: 5px;
           box-shadow: 2px 2px 5px rgb(58, 58, 58);
@@ -74,8 +75,9 @@ function MainContent() {
         .table thead th {
           border-top: none;
         }
-      
-      
+        .btn {
+          margin-right: 15px;
+        }        
       `}</style>
       <table className='table'>
         <thead className='thead'>
@@ -98,18 +100,14 @@ function MainContent() {
               abv={keg.abv}
               price={keg.price}
               remaining={keg.remaining}
-              key={index}/>
+              key={index}
+            />
           )}
         </tbody>
       </table>
-      <Link to='/add'>
-        <button className='btn'>Add New Keg</button>
-      </Link>
-      <Link to='/happyHour'>
-        <button className='btn'>Start Happy Hour</button>
-      </Link>
       <Switch>
-        <Route exact path='/'/>
+        <Route exact path='/' component={TableButtons}/>
+        <Route path='/happyHour' component={TableButtonsHappy}/>
         <Route path='/add' component={AddForm}/>
       </Switch>
     </div>

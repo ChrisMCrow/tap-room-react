@@ -14,13 +14,13 @@ function App() {
         body {
           background-image: url(${bgImage});
           background-repeat: no-repeat;
+          background-attachment: fixed;
           background-color: black;
           background-position-x: center;
           background-position-y: top;
         }
         .jumbotron {
-          margin-top: 20px;
-          margin-bottom: 40px;
+          margin: 20px 0 0 0;
           text-transform: uppercase;
           font-size: 50px;
           text-shadow: 2px 2px 2px black;
@@ -31,7 +31,23 @@ function App() {
           border: 1px solid rgb(196, 179, 179);
           border-radius: 5px;
           box-shadow: 2px 2px 5px rgb(58, 58, 58);
-      }      
+          margin-bottom: 88px;
+        }
+        .mainContent {
+          margin-bottom: 100px;
+        }
+        .btn {
+          border-radius: 1px;
+          border: 1px solid rgb(196, 179, 179);
+          color: rgb(196, 179, 179);
+          background-color: black;
+          font-family: 'Lora', sans-serif;
+          font-weight: 700;
+        }
+        .btn:hover {
+          background-color: rgba(206, 121, 23, 0.7);
+          border: 1px solid rgb(196, 179, 179);
+        }
       `}</style>
       <div>
         <h1 className='jumbotron'>The Tap Room</h1>
@@ -39,7 +55,7 @@ function App() {
           <Route exact path='/'/>
           <Route path='/happyHour' component={HappyHour}/>
         </Switch>
-        <div>
+        <div className='mainContent'>
           <MainContent/>
         </div>
       </div>
