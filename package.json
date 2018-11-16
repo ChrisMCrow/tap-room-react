@@ -1,7 +1,7 @@
 {
   "name": "react-tap-room",
   "version": "1.0.0",
-  "description": "",
+  "description": "a website for a taproom built in React",
   "main": "index.js",
   "scripts": {
     "lint": "eslint src/** src/**/**; exit 0",
