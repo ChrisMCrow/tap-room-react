@@ -1,4 +1,5 @@
 import React from 'react';
+import Keg from './Keg';
 
 const masterKegList = [
   {
@@ -54,15 +55,32 @@ const masterKegList = [
 
 function MainContent() {
   return(
-    <div>
-      {masterKegList.map( (keg, index) => 
-        <Keg name={keg.name}
-          brewer={keg.brewer}
-          description={keg.description}
-          abv={keg.abv}
-          price={keg.price}
-          remaining={keg.remaining}/>
-      )}
+    <div className='content'>
+      <table className='table'>
+        <thead className='thead'>
+          <tr className='table-headers'>
+            <th scope='col'>Name</th>
+            <th scope='col'>Brand</th>
+            <th scope='col'>Price</th>
+            <th scope='col'>Alcohol Content</th>
+            <th scope='col'>Pints Remaining</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {masterKegList.map( (keg, index) => 
+            <Keg name={keg.name}
+              brewer={keg.brewer}
+              description={keg.description}
+              abv={keg.abv}
+              price={keg.price}
+              remaining={keg.remaining}
+              key={index}/>
+          )}
+        </tbody>
+      </table>
     </div>
   );
 }
