@@ -3,6 +3,7 @@ import Keg from './Keg';
 import AddForm from './AddForm';
 import TableButtons from './TableButtons';
 import TableButtonsHappy from './TableButtonsHappy';
+import EditForm from './EditForm';
 import { Switch, Route } from 'react-router-dom';
 
 const masterKegList = [
@@ -109,6 +110,7 @@ function MainContent() {
         <Route exact path='/' component={TableButtons}/>
         <Route path='/happyHour' component={TableButtonsHappy}/>
         <Route path='/add' component={AddForm}/>
+        <Route path='/edit/:kegName' component={EditForm}/>
       </Switch>
     </div>
   );

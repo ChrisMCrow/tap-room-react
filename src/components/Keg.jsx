@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function Keg(props) {
+  const editPath = `/edit/${props.name}`;
   return(
     <tr>
       <style jsx>{`
@@ -12,7 +14,11 @@ function Keg(props) {
       <td>{props.price}</td>
       <td>{props.abv}</td>
       <td>{props.remaining}</td>
-      <td><button className='btn'>Edit</button></td>
+      <td>
+        <Link to={editPath}>
+          <button className='btn'>Edit</button>
+        </Link>
+      </td>
       <td>
         <div className='dropdown'>
           <button className='btn dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Sell</button>
