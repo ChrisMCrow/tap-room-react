@@ -9,7 +9,9 @@
 A website that allows Tap Room epmployees to manage inventory and pricing.
 
 ### Structure
-
+![Component Structure](
+        https://github.com/ChrisMCrow/tap-room-react/src/assets/img/TapRoomComponentStructure.png
+      )
 
 ## Setup/Installation Requirements
 
