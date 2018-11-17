@@ -6,7 +6,7 @@
 
 ## Description
 
-A website that allows Tap Room epmployees to manage inventory and pricing.
+A website that allows Tap Room epmployees to manage inventory and pricing. This is based on a project recently built first in angular. I appreciate the differences. I like how React keeps the html, js, and css all essentially in the same file. It keeps it easy when making tweaks. Angular seems more flexible so far however with passing data around.
 
 ### Structure
 ![Component Structure](
@@ -18,6 +18,9 @@ A website that allows Tap Room epmployees to manage inventory and pricing.
 1. Clone this repository.
 2. Run `npm install` in the terminal.
 3. Run `npm start run` in the terminal.
+
+## Notes
+A few unforeseen issues for this project included passing props up rather than down. I was attempting have the edit button for each of the items in the list be able to pass the props from that specific item to a new component nested outside of that one, but wasn't able to figure it out.
 
 ## Known Bugs
 * The sight does not yet implement CRUD functionality and is thus mostly just for looks at this point.
