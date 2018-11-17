@@ -4,6 +4,7 @@ import App from './components/App';
 import { HashRouter } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 
 const render = (Component) => {

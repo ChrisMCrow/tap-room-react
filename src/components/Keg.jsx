@@ -7,7 +7,18 @@ function Keg(props) {
   return(
     <tr>
       <style jsx>{`
-  
+        .dropdown-menu {
+          background-color:rgba(119, 70, 14, 0.95);
+          color: white;
+          border-radius: 1px;
+          border: 1px solid rgb(196, 179, 179);
+        }
+        
+        .dropdown-item:hover {
+          color: rgb(196, 179, 179);
+          background-color: rgba(0, 0, 0, .8);
+          cursor: pointer;
+        }
       `}</style>
       <td>{props.name} <em>({props.description})</em></td>
       <td>{props.brewer}</td>

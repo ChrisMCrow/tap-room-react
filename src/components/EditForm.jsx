@@ -14,7 +14,7 @@ function EditForm(props) {
         <input type='text' className='form-control mb-2' value={props.name} placeholder='update name'/>
         <input type="text" className="form-control mb-2" name="brand" value={props.brewer} placeholder='update brand'/>
         <input type="number" className="form-control mb-2" name="price" value={props.price} placeholder='update price'/>
-        <input type="number" className="form-control mb-2" name="alcoholContent" value={props.abv} placeholder='update abv'/>
+        <input type="number" className="form-control mb-2" name="alcoholContent" value={props.abv} placeholder='update abvgit'/>
         <Link to='/'>
           <button className="btn">Update</button>
         </Link>
