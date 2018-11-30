@@ -45,13 +45,13 @@ function Keg(props) {
         <div className='dropdown'>
           <button className='btn dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Sell</button>
           <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-            <a onClick={() => {props.onSell(props.id, 1)}} className='dropdown-item'>Pint</a>
-            <a onClick={() => {props.onSell(props.id, 2)}} className='dropdown-item'>Growler</a>
-            <a onClick={() => {props.onSell(props.id, 4)}} className='dropdown-item'>Large Growler</a>
+            <a onClick={() => {props.onSell(props.id, 1);}} className='dropdown-item'>Pint</a>
+            <a onClick={() => {props.onSell(props.id, 2);}} className='dropdown-item'>Growler</a>
+            <a onClick={() => {props.onSell(props.id, 4);}} className='dropdown-item'>Large Growler</a>
           </div>
         </div>
       </td>
-      <td><button className='btn'>Delete</button></td>
+      <td><button onClick={() => {props.onDelete(props.id);}} className='btn'>Delete</button></td>
     </tr>
   );
 }
@@ -67,7 +67,8 @@ Keg.propTypes = {
   onSelectedKeg: PropTypes.func,
   selectedKeg: PropTypes.string,
   happyHour: PropTypes.bool,
-  onSell: PropTypes.func
+  onSell: PropTypes.func,
+  onDelete: PropTypes.func
 };
 
 export default Keg;
