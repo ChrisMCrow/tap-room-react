@@ -9,7 +9,8 @@ function EditForm(props) {
   let _abv = null;
   let _remaining = null;
 
-  function handleUpdateButton() {
+  function handleUpdateButton(event) {
+    event.preventDefault();
     props.onUpdatedKeg({
       name: _name.value,
       brewer: _brewer.value,
@@ -20,7 +21,8 @@ function EditForm(props) {
     }, props.kegId);
   }
 
-  function handleCancelButton() {
+  function handleCancelButton(event) {
+    event.preventDefault();
     props.onUpdatedKeg(null);
   }
 
@@ -31,7 +33,7 @@ function EditForm(props) {
           margin-right: 15px;
         }        
       `}</style>
-      <form>
+      <form onSubmit={handleUpdateButton}>
         <input 
           type='text' 
           className='form-control mb-2' 
@@ -74,8 +76,8 @@ function EditForm(props) {
           placeholder='Remaining'
           ref={(input) => (_remaining = input)} 
         />
-        <button onClick={handleUpdateButton} className="btn">Update</button>
-        <button onClick={handleCancelButton} className="btn">Cancel</button>
+        <button type='submit' className="btn">Update</button>
+        <button type='button' onClick={handleCancelButton} className="btn">Cancel</button>
       </form>
     </div>  
   );

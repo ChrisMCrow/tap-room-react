@@ -2,11 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Keg(props) {
-
-  function handleEditButton() {
-    props.onSelectedKeg(props.id);
-  }
-
   return(
     <tr>
       <style jsx>{`
@@ -16,11 +11,18 @@ function Keg(props) {
           border-radius: 1px;
           border: 1px solid rgb(196, 179, 179);
         }
-        
         .dropdown-item:hover {
           color: rgb(196, 179, 179);
           background-color: rgba(0, 0, 0, .8);
           cursor: pointer;
+        }
+        .mute {
+          border: 1px solid #4d4d4d !important;
+          color: #4d4d4d !important;
+        }
+        .mute:hover {
+          cursor: default;
+          background-color: black;
         }
       `}</style>
       <td>{props.name} <em>({props.description})</em></td>
@@ -29,7 +31,11 @@ function Keg(props) {
       <td>{props.abv}</td>
       <td>{props.remaining}</td>
       <td>
-        <button onClick={handleEditButton} className='btn'>Edit</button>
+        {props.selectedKeg ? (
+          <button className='btn mute'>Edit</button>
+        ) : (
+          <button onClick={() => {props.onSelectedKeg(props.id);}} className='btn'>Edit</button>
+        )}
       </td>
       <td>
         <div className='dropdown'>
@@ -54,6 +60,7 @@ Keg.propTypes = {
   price: PropTypes.string,
   remaining: PropTypes.string,
   onSelectedKeg: PropTypes.func,
+  selectedKeg: PropTypes.string,
   id: PropTypes.string
 };
 

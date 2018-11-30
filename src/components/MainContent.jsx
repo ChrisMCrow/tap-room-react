@@ -1,8 +1,8 @@
 import React from 'react';
 import Keg from './Keg';
-import AddForm from './AddForm';
-import TableButtons from './TableButtons';
-import TableButtonsHappy from './TableButtonsHappy';
+// import AddForm from './AddForm';
+// import TableButtons from './TableButtons';
+// import TableButtonsHappy from './TableButtonsHappy';
 import EditForm from './EditForm';
 
 class MainContent extends React.Component {
@@ -78,8 +78,6 @@ class MainContent extends React.Component {
       newSelectedKeg = null;
       this.setState({selectedKeg: newSelectedKeg});
     } else {
-      console.log('before update: ' + newKegList[kegId]);
-      console.log('updated: ' + input);
       newKegList[kegId] = input;
       newSelectedKeg = null;
       this.setState({masterKegList: newKegList});
@@ -88,17 +86,17 @@ class MainContent extends React.Component {
   }
 
   render() {
+    const contentStyle = {
+      padding: '0 10px 10px 10px',
+      color: 'rgb(196, 179, 179)',
+      backgroundColor: 'rgba(0, 0, 0, .8)',
+      border: '1px solid rgb(196, 179, 179)',
+      borderRadius: '5px',
+      boxShadow: '2px 2px 5px rgb(58, 58, 58)'
+    };
     const mainRenderedContent =
-      <div className='content'>
+      <div>
         <style jsx>{`
-          .content {
-            padding: 0 10px 10px 10px;
-            color: rgb(196, 179, 179);
-            background-color: rgba(0, 0, 0, .8);
-            border: 1px solid rgb(196, 179, 179);
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgb(58, 58, 58);
-          }
           th {
             font-family: 'Lora', sans-serif;
             font-weight: 700;
@@ -133,6 +131,7 @@ class MainContent extends React.Component {
                 price={keg.price}
                 remaining={keg.remaining}
                 onSelectedKeg={this.handleSelectedKeg}
+                selectedKeg = {this.state.selectedKeg}
                 id={kegId}
                 key={kegId}
               />;
@@ -142,7 +141,7 @@ class MainContent extends React.Component {
       </div>;
     if (this.state.selectedKeg) {
       return(
-        <div>
+        <div style={contentStyle}>
           {mainRenderedContent}
           <EditForm
             keg = {this.state.masterKegList[this.state.selectedKeg]}
@@ -153,8 +152,8 @@ class MainContent extends React.Component {
       );
     } else {
       return (
-        <div>
-          {mainRenderedContent};
+        <div style={contentStyle}>
+          {mainRenderedContent}
         </div>
       );
     }
