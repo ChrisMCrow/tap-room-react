@@ -20,18 +20,21 @@ A website that allows Tap Room epmployees to manage inventory and pricing. This 
 3. Run `npm start run` in the terminal.
 
 ## Notes
-A few unforeseen issues for this project included passing props up rather than down. I was attempting have the edit button for each of the items in the list be able to pass the props from that specific item to a new component nested outside of that one, but wasn't able to figure it out.
+Week 1: 
+  A few unforeseen issues for this project included passing props up rather than down. I was attempting have the edit button for each of the items in the list be able to pass the props from that specific item to a new component nested outside of that one, but wasn't able to figure it out.
+Week 2:
+  I learned how to address all the issues from week one. No real issues this week. Everything functions.
 
 ## Known Bugs
-* The sight does not yet implement CRUD functionality and is thus mostly just for looks at this point.
+* none
 
 ## Technologies Used
+* React
 * HTML
 * CSS
 * Bootstrap
 * JavaScript
 * jQuery
-* React
 * React Router
 * Babel
 * Styled JSX
