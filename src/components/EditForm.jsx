@@ -11,12 +11,12 @@ function EditForm(props) {
 
   function handleUpdateButton() {
     props.onUpdatedKeg({
-      name: _name,
-      brewer: _brewer,
-      description: _description,
-      price: _price,
-      abv: _abv,
-      remaining: _remaining
+      name: _name.value,
+      brewer: _brewer.value,
+      description: _description.value,
+      price: _price.value,
+      abv: _abv.value,
+      remaining: _remaining.value
     }, props.kegId);
   }
 
@@ -77,7 +77,8 @@ function EditForm(props) {
         <button onClick={handleUpdateButton} className="btn">Update</button>
         <button onClick={handleCancelButton} className="btn">Cancel</button>
       </form>
-    </div>  );
+    </div>  
+  );
 }
 
 EditForm.propTypes = {

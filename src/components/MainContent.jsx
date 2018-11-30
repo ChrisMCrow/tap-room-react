@@ -72,13 +72,18 @@ class MainContent extends React.Component {
   }
 
   handleUpdatedKeg(input, kegId) {
-    let stateCopy = Object.assign({}, this.state);
+    let newKegList = Object.assign({}, this.state.masterKegList);
+    let newSelectedKeg = this.state.selectedKeg.slice();
     if (input === null) {
-      stateCopy.selectedKeg = null;
-      this.setState({state: stateCopy});
+      newSelectedKeg = null;
+      this.setState({selectedKeg: newSelectedKeg});
     } else {
-      stateCopy.masterKegList[kegId] = input;
-      this.setState({state: stateCopy});
+      console.log('before update: ' + newKegList[kegId]);
+      console.log('updated: ' + input);
+      newKegList[kegId] = input;
+      newSelectedKeg = null;
+      this.setState({masterKegList: newKegList});
+      this.setState({selectedKeg: newSelectedKeg});
     }
   }
 

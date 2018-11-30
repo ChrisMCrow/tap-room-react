@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 function Keg(props) {
 
   function handleEditButton() {
-    console.log('Keg Edit clicked');
     props.onSelectedKeg(props.id);
   }
 
