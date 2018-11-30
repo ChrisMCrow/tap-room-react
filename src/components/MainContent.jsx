@@ -4,7 +4,6 @@ import AddForm from './AddForm';
 import TableButtons from './TableButtons';
 import TableButtonsHappy from './TableButtonsHappy';
 import EditForm from './EditForm';
-import { Switch, Route } from 'react-router-dom';
 
 class MainContent extends React.Component {
 
@@ -60,12 +59,31 @@ class MainContent extends React.Component {
           price: '6',
           remaining: '58'
         }
-      }
+      },
+      selectedKeg: null
     };
+    this.newKeg = false;
+    this.handleSelectedKeg = this.handleSelectedKeg.bind(this);
+    this.handleUpdatedKeg = this.handleUpdatedKeg.bind(this);
+  }
+
+  handleSelectedKeg(kegId) {
+    this.setState({selectedKeg: kegId});
+  }
+
+  handleUpdatedKeg(input, kegId) {
+    let stateCopy = Object.assign({}, this.state);
+    if (input === null) {
+      stateCopy.selectedKeg = null;
+      this.setState({state: stateCopy});
+    } else {
+      stateCopy.masterKegList[kegId] = input;
+      this.setState({state: stateCopy});
+    }
   }
 
   render() {
-    return (
+    const mainRenderedContent =
       <div className='content'>
         <style jsx>{`
           .content {
@@ -109,19 +127,32 @@ class MainContent extends React.Component {
                 abv={keg.abv}
                 price={keg.price}
                 remaining={keg.remaining}
+                onSelectedKeg={this.handleSelectedKeg}
+                id={kegId}
                 key={kegId}
               />;
             })}
           </tbody>
         </table>
-        <Switch>
-          <Route exact path='/' component={TableButtons} />
-          <Route path='/happyHour' component={TableButtonsHappy} />
-          <Route path='/add' component={AddForm} />
-          <Route path='/edit/:kegName' component={EditForm} />
-        </Switch>
-      </div>
-    );
+      </div>;
+    if (this.state.selectedKeg) {
+      return(
+        <div>
+          {mainRenderedContent}
+          <EditForm
+            keg = {this.state.masterKegList[this.state.selectedKeg]}
+            kegId = {this.state.selectedKeg}
+            onUpdatedKeg = {this.handleUpdatedKeg}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {mainRenderedContent};
+        </div>
+      );
+    }
   }
 }
 

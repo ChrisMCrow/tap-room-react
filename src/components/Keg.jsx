@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 function Keg(props) {
-  const editPath = `/edit/${props.name}`;
+
+  function handleEditButton() {
+    console.log('Keg Edit clicked');
+    props.onSelectedKeg(props.id);
+  }
+
   return(
     <tr>
       <style jsx>{`
@@ -26,9 +30,7 @@ function Keg(props) {
       <td>{props.abv}</td>
       <td>{props.remaining}</td>
       <td>
-        <Link to={editPath}>
-          <button className='btn'>Edit</button>
-        </Link>
+        <button onClick={handleEditButton} className='btn'>Edit</button>
       </td>
       <td>
         <div className='dropdown'>
@@ -52,6 +54,8 @@ Keg.propTypes = {
   abv: PropTypes.string,
   price: PropTypes.string,
   remaining: PropTypes.string,
+  onSelectedKeg: PropTypes.func,
+  id: PropTypes.string
 };
 
 export default Keg;
