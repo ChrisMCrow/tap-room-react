@@ -7,7 +7,7 @@ import EditForm from './EditForm';
 import { Switch, Route } from 'react-router-dom';
 
 class MainContent extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +40,7 @@ class MainContent extends React.Component {
           name: 'Prismatic',
           brewer: 'Ninkasi',
           description: 'Juicy IPA',
-          abv:  '5.9%',
+          abv: '5.9%',
           price: '6',
           remaining: '75'
         },
@@ -48,7 +48,7 @@ class MainContent extends React.Component {
           name: 'Juicy Haze',
           brewer: 'New Belgium',
           description: 'India Pale Ale',
-          abv:  '7.5%',
+          abv: '7.5%',
           price: '6',
           remaining: '18'
         },
@@ -56,16 +56,16 @@ class MainContent extends React.Component {
           name: '8 Hop',
           brewer: 'New Belgium',
           description: 'Pale Ale',
-          abv:  '5.5%',
+          abv: '5.5%',
           price: '6',
           remaining: '58'
         }
       }
-    }
+    };
   }
 
   render() {
-    return(
+    return (
       <div className='content'>
         <style jsx>{`
           .content {
@@ -101,23 +101,24 @@ class MainContent extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {masterKegList.map( (keg, index) => 
-              <Keg name={keg.name}
+            {Object.keys(this.state.masterKegList).map(kegId => {
+              let keg = this.state.masterKegList[kegId];
+              return <Keg name={keg.name}
                 brewer={keg.brewer}
                 description={keg.description}
                 abv={keg.abv}
                 price={keg.price}
                 remaining={keg.remaining}
-                key={index}
-              />
-            )}
+                key={kegId}
+              />;
+            })}
           </tbody>
         </table>
         <Switch>
-          <Route exact path='/' component={TableButtons}/>
-          <Route path='/happyHour' component={TableButtonsHappy}/>
-          <Route path='/add' component={AddForm}/>
-          <Route path='/edit/:kegName' component={EditForm}/>
+          <Route exact path='/' component={TableButtons} />
+          <Route path='/happyHour' component={TableButtonsHappy} />
+          <Route path='/add' component={AddForm} />
+          <Route path='/edit/:kegName' component={EditForm} />
         </Switch>
       </div>
     );
