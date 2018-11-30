@@ -27,7 +27,11 @@ function Keg(props) {
       `}</style>
       <td>{props.name} <em>({props.description})</em></td>
       <td>{props.brewer}</td>
-      <td>{props.price}</td>
+      {props.happyHour ? (
+        <td>{props.price * .9}</td>
+      ) : (
+        <td>{props.price}</td>
+      )}
       <td>{props.abv}</td>
       <td>{props.remaining}</td>
       <td>
@@ -61,6 +65,7 @@ Keg.propTypes = {
   remaining: PropTypes.string,
   onSelectedKeg: PropTypes.func,
   selectedKeg: PropTypes.string,
+  happyHour: PropTypes.bool,
   id: PropTypes.string
 };
 

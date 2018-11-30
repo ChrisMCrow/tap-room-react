@@ -2,7 +2,6 @@ import React from 'react';
 import Keg from './Keg';
 // import AddForm from './AddForm';
 import TableButtons from './TableButtons';
-// import TableButtonsHappy from './TableButtonsHappy';
 import EditForm from './EditForm';
 import HappyHour from './HappyHour';
 
@@ -151,6 +150,7 @@ class MainContent extends React.Component {
                 remaining={keg.remaining}
                 onSelectedKeg={this.handleSelectedKeg}
                 selectedKeg = {this.state.selectedKeg}
+                happyHour = {this.state.happyHour}
                 id={kegId}
                 key={kegId}
               />;
