@@ -36,22 +36,22 @@ function Keg(props) {
       <td>{props.remaining}</td>
       <td>
         {props.selectedKeg ? (
-          <button className='btn mute'>Edit</button>
+          <button className = 'btn mute'>Edit</button>
         ) : (
-          <button onClick={() => {props.onSelectedKeg(props.id);}} className='btn'>Edit</button>
+          <button onClick = {() => {props.onSelectedKeg(props.id);}} className = 'btn'>Edit</button>
         )}
       </td>
       <td>
-        <div className='dropdown'>
-          <button className='btn dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Sell</button>
-          <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-            <a onClick={() => {props.onSell(props.id, 1);}} className='dropdown-item'>Pint</a>
-            <a onClick={() => {props.onSell(props.id, 2);}} className='dropdown-item'>Growler</a>
-            <a onClick={() => {props.onSell(props.id, 4);}} className='dropdown-item'>Large Growler</a>
+        <div className = 'dropdown'>
+          <button className = 'btn dropdown-toggle' type = 'button' id = 'dropdownMenuButton' data-toggle = 'dropdown' aria-haspopup = 'true' aria-expanded = 'false'>Sell</button>
+          <div className = 'dropdown-menu' aria-labelledby = 'dropdownMenuButton'>
+            <a onClick = {() => {props.onSell(props.id, 1);}} className = 'dropdown-item'>Pint</a>
+            <a onClick = {() => {props.onSell(props.id, 2);}} className = 'dropdown-item'>Growler</a>
+            <a onClick = {() => {props.onSell(props.id, 4);}} className = 'dropdown-item'>Large Growler</a>
           </div>
         </div>
       </td>
-      <td><button onClick={() => {props.onDelete(props.id);}} className='btn'>Delete</button></td>
+      <td><button onClick = {() => {props.onDelete(props.id);}} className = 'btn'>Delete</button></td>
     </tr>
   );
 }

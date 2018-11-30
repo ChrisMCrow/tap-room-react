@@ -1,6 +1,6 @@
 import React from 'react';
 import Keg from './Keg';
-// import AddForm from './AddForm';
+import AddForm from './AddForm';
 import TableButtons from './TableButtons';
 import EditForm from './EditForm';
 import HappyHour from './HappyHour';
@@ -17,7 +17,7 @@ class MainContent extends React.Component {
           description: 'Sparkling Wine & Grapefruit',
           abv: '6.8%',
           price: '7',
-          remaining: '20'
+          remaining: 20
         },
         1: {
           name: 'Tart N Juicy',
@@ -25,7 +25,7 @@ class MainContent extends React.Component {
           description: 'Sour IPA',
           abv: '4.5%',
           price: '6',
-          remaining: '60'
+          remaining: 60
         },
         2: {
           name: 'Hamm\'s',
@@ -33,7 +33,7 @@ class MainContent extends React.Component {
           description: 'American Lager',
           abv: '4.7%',
           price: '3',
-          remaining: '65'
+          remaining: 65
         },
         3: {
           name: 'Prismatic',
@@ -41,7 +41,7 @@ class MainContent extends React.Component {
           description: 'Juicy IPA',
           abv: '5.9%',
           price: '6',
-          remaining: '75'
+          remaining: 75
         },
         4: {
           name: 'Juicy Haze',
@@ -49,7 +49,7 @@ class MainContent extends React.Component {
           description: 'India Pale Ale',
           abv: '7.5%',
           price: '6',
-          remaining: '18'
+          remaining: 18
         },
         5: {
           name: '8 Hop',
@@ -57,11 +57,12 @@ class MainContent extends React.Component {
           description: 'Pale Ale',
           abv: '5.5%',
           price: '6',
-          remaining: '58'
+          remaining: 58
         }
       },
       selectedKeg: null,
       happyHour: false,
+      addKeg: false,
     };
     this.newKeg = false;
     this.handleSelectedKeg = this.handleSelectedKeg.bind(this);
@@ -69,6 +70,8 @@ class MainContent extends React.Component {
     this.handleHappyHour = this.handleHappyHour.bind(this);
     this.handleSell = this.handleSell.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleAddForm = this.handleAddForm.bind(this);
+    this.handleAddKeg = this.handleAddKeg.bind(this);
   }
 
   handleSelectedKeg(kegId) {
@@ -77,15 +80,12 @@ class MainContent extends React.Component {
 
   handleUpdatedKeg(input, kegId) {
     let newKegList = Object.assign({}, this.state.masterKegList);
-    let newSelectedKeg = this.state.selectedKeg.slice();
     if (input === null) {
-      newSelectedKeg = null;
-      this.setState({selectedKeg: newSelectedKeg});
+      this.setState({selectedKeg: null});
     } else {
       newKegList[kegId] = input;
-      newSelectedKeg = null;
       this.setState({masterKegList: newKegList});
-      this.setState({selectedKeg: newSelectedKeg});
+      this.setState({selectedKeg: null});
     }
   }
 
@@ -108,7 +108,7 @@ class MainContent extends React.Component {
     } else if (newKegList[id].remaining < quantity) {
       alert(`There are not enough pints remaining of ${newKegList[id].name} to make this sale.`);
     } else {
-      alert(`You've just sold out of ${newKegList[id].name}. Time to replace it.`)
+      alert(`You've just sold out of ${newKegList[id].name}. Time to replace it.`);
       delete newKegList[id];
       this.setState({masterKegList: newKegList});
     }
@@ -120,6 +120,20 @@ class MainContent extends React.Component {
     if (confirm(`Are you sure you want to delete ${newKegList[id].name}?`)) {
       delete newKegList[id];
       this.setState({masterKegList: newKegList});
+    }
+  }
+
+  handleAddForm() {
+    this.setState({addKeg: true});  
+  }
+
+  handleAddKeg (input, kegId) {
+    if (input === null) {
+      this.setState({addKeg: false});
+    } else {
+      let newKegList = Object.assign({}, this.state.masterKegList, {[kegId]: input});
+      this.setState({masterKegList: newKegList});
+      this.setState({addKeg: false});
     }
   }
 
@@ -151,35 +165,35 @@ class MainContent extends React.Component {
         ) : (
           null
         )}
-        <table className='table'>
-          <thead className='thead'>
-            <tr className='table-headers'>
-              <th scope='col'>Name</th>
-              <th scope='col'>Brand</th>
-              <th scope='col'>Price</th>
-              <th scope='col'>Alcohol Content</th>
-              <th scope='col'>Pints Remaining</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-              <th scope="col"></th>
+        <table className = 'table'>
+          <thead className = 'thead'>
+            <tr className = 'table-headers'>
+              <th scope = 'col'>Name</th>
+              <th scope = 'col'>Brand</th>
+              <th scope = 'col'>Price</th>
+              <th scope = 'col'>Alcohol Content</th>
+              <th scope = 'col'>Pints Remaining</th>
+              <th scope = "col"></th>
+              <th scope = "col"></th>
+              <th scope = "col"></th>
             </tr>
           </thead>
           <tbody>
             {Object.keys(this.state.masterKegList).map(kegId => {
               let keg = this.state.masterKegList[kegId];
-              return <Keg name={keg.name}
-                brewer={keg.brewer}
-                description={keg.description}
-                abv={keg.abv}
-                price={keg.price}
-                remaining={keg.remaining}
-                id={kegId}
-                onSelectedKeg={this.handleSelectedKeg}
+              return <Keg name = {keg.name}
+                brewer = {keg.brewer}
+                description = {keg.description}
+                abv = {keg.abv}
+                price = {keg.price}
+                remaining = {keg.remaining}
+                id = {kegId}
+                onSelectedKeg = {this.handleSelectedKeg}
                 selectedKeg = {this.state.selectedKeg}
                 happyHour = {this.state.happyHour}
                 onSell = {this.handleSell}
                 onDelete = {this.handleDelete}
-                key={kegId}
+                key = {kegId}
               />;
             })}
           </tbody>
@@ -187,7 +201,7 @@ class MainContent extends React.Component {
       </div>;
     if (this.state.selectedKeg) {
       return(
-        <div style={contentStyle}>
+        <div style = {contentStyle}>
           {mainRenderedContent}
           <EditForm
             keg = {this.state.masterKegList[this.state.selectedKeg]}
@@ -196,13 +210,23 @@ class MainContent extends React.Component {
           />
         </div>
       );
+    } else if (this.state.addKeg) {
+      return(
+        <div style = {contentStyle}>
+          {mainRenderedContent}
+          <AddForm
+            onAddKeg = {this.handleAddKeg}
+          />
+        </div>
+      );
     } else {
       return (
-        <div style={contentStyle}>
+        <div style = {contentStyle}>
           {mainRenderedContent}
           <TableButtons 
             happyHourStatus = {this.state.happyHour}
             onHappyHour = {this.handleHappyHour}
+            onAddForm = {this.handleAddForm}
           />
         </div>
       );

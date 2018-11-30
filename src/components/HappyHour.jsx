@@ -2,7 +2,7 @@ import React from 'react';
 
 function HappyHour() {
   return(
-    <div className='hhWrapper'>
+    <div className = 'hhWrapper'>
       <style jsx>{`
         .hhWrapper {
           position: relative;
@@ -22,7 +22,7 @@ function HappyHour() {
           width: 100%;
         }
       `}</style>
-      <h2 id='hhBanner'>It's Happy Hour!</h2>
+      <h2 id = 'hhBanner'>It's Happy Hour!</h2>
     </div>
   );
 }

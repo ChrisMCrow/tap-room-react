@@ -1,11 +1,10 @@
 import React from 'react';
 import bgImage from '../assets/img/TapRoomBG1.jpg';
 import MainContent from './MainContent';
-import HappyHour from './HappyHour';
 
 function App() {
   return(
-    <div className='container'>
+    <div className = 'container'>
       <style global jsx>{`
         @import url('https://fonts.googleapis.com/css?family=Syncopate:700');
         @import url('https://fonts.googleapis.com/css?family=Lora:400,700');        
@@ -49,8 +48,8 @@ function App() {
         }
       `}</style>
       <div>
-        <h1 className='jumbotron'>The Tap Room</h1>
-        <div className='mainContent'>
+        <h1 className = 'jumbotron'>The Tap Room</h1>
+        <div className = 'mainContent'>
           <MainContent/>
         </div>
       </div>

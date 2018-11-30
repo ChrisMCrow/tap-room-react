@@ -1,7 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import v4 from 'uuid';
 
-function AddForm() {
+function AddForm(props) {
+  let _name = null;
+  let _brewer = null;
+  let _description = null;
+  let _price = null;
+  let _abv = null;
+  let _remaining = null;
+
+  function handleAddButton(event) {
+    event.preventDefault();
+    props.onAddKeg({
+      name: _name.value,
+      brewer: _brewer.value,
+      description: _description.value,
+      price: _price.value,
+      abv: _abv.value,
+      remaining: parseInt(_remaining.value)
+    }, v4());
+  }
+
+  function handleCancelButton(event) {
+    event.preventDefault();
+    props.onAddKeg(null);
+  }
+
   return(
     <div>
       <style jsx>{`
@@ -9,20 +34,52 @@ function AddForm() {
           margin-right: 15px;
         }        
       `}</style>
-      <form>
-        <input type='text' className='form-control mb-2' placeholder='name'/>
-        <input type="text" className="form-control mb-2" name="brand" placeholder="Brand" />
-        <input type="number" className="form-control mb-2" name="price" placeholder="Price" />
-        <input type="number" className="form-control mb-2" name="alcoholContent" placeholder="Alcohol Content" />
-        <Link to='/'>
-          <button className="btn">Add</button>
-        </Link>
-        <Link to='/'>
-          <button className="btn">Cancel</button>
-        </Link>
+      <form onSubmit = {handleAddButton}>
+        <input 
+          type = 'text' 
+          className = 'form-control mb-2'
+          placeholder = 'Name'
+          ref = {(input) => (_name = input)} 
+        />
+        <input 
+          type = "text" 
+          className = "form-control mb-2" 
+          placeholder = 'Brewer'
+          ref = {(input) => (_brewer = input)} 
+        />
+        <input 
+          type = "text" 
+          className = "form-control mb-2" 
+          placeholder = 'Description'
+          ref = {(input) => (_description = input)} 
+        />
+        <input 
+          type = "number" 
+          className = "form-control mb-2" 
+          placeholder = 'Price'
+          ref = {(input) => (_price = input)} 
+        />
+        <input 
+          type = "text" 
+          className = "form-control mb-2" 
+          placeholder = 'ABV'
+          ref = {(input) => (_abv = input)} 
+        />
+        <input 
+          type = "number" 
+          className = "form-control mb-2" 
+          placeholder = 'Remaining'
+          ref = {(input) => (_remaining = input)} 
+        />
+        <button type = 'submit' className = "btn">Add</button>
+        <button type = 'button' onClick = {handleCancelButton} className = "btn">Cancel</button>
       </form>
     </div>
   );
 }
+
+AddForm.propTypes = {
+  onAddKeg: PropTypes.func
+};
 
 export default AddForm;

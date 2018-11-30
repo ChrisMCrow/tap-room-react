@@ -17,7 +17,7 @@ function EditForm(props) {
       description: _description.value,
       price: _price.value,
       abv: _abv.value,
-      remaining: _remaining.value
+      remaining: parseInt(_remaining.value)
     }, props.kegId);
   }
 
@@ -33,51 +33,51 @@ function EditForm(props) {
           margin-right: 15px;
         }        
       `}</style>
-      <form onSubmit={handleUpdateButton}>
+      <form onSubmit = {handleUpdateButton}>
         <input 
-          type='text' 
-          className='form-control mb-2' 
-          defaultValue={props.keg.name} 
-          placeholder='Name'
-          ref={(input) => (_name = input)} 
+          type = 'text' 
+          className = 'form-control mb-2' 
+          defaultValue = {props.keg.name} 
+          placeholder = 'Name'
+          ref = {(input) => (_name = input)} 
         />
         <input 
-          type="text" 
-          className="form-control mb-2" 
-          defaultValue={props.keg.brewer} 
-          placeholder='Brewer'
-          ref={(input) => (_brewer = input)} 
+          type = "text" 
+          className = "form-control mb-2" 
+          defaultValue = {props.keg.brewer} 
+          placeholder = 'Brewer'
+          ref = {(input) => (_brewer = input)} 
         />
         <input 
-          type="text" 
-          className="form-control mb-2" 
-          defaultValue={props.keg.description} 
-          placeholder='Description'
-          ref={(input) => (_description = input)} 
+          type = "text" 
+          className = "form-control mb-2" 
+          defaultValue = {props.keg.description} 
+          placeholder = 'Description'
+          ref = {(input) => (_description = input)} 
         />
         <input 
-          type="number" 
-          className="form-control mb-2" 
-          defaultValue={props.keg.price} 
-          placeholder='Price'
-          ref={(input) => (_price = input)} 
+          type = "number" 
+          className = "form-control mb-2" 
+          defaultValue = {props.keg.price} 
+          placeholder = 'Price'
+          ref = {(input) => (_price = input)} 
         />
         <input 
-          type="text" 
-          className="form-control mb-2" 
-          defaultValue={props.keg.abv} 
-          placeholder='ABV'
-          ref={(input) => (_abv = input)} 
+          type = "text" 
+          className = "form-control mb-2" 
+          defaultValue = {props.keg.abv} 
+          placeholder = 'ABV'
+          ref = {(input) => (_abv = input)} 
         />
         <input 
-          type="number" 
-          className="form-control mb-2" 
-          defaultValue={props.keg.remaining} 
-          placeholder='Remaining'
-          ref={(input) => (_remaining = input)} 
+          type = "number" 
+          className = "form-control mb-2" 
+          defaultValue = {props.keg.remaining} 
+          placeholder = 'Remaining'
+          ref = {(input) => (_remaining = input)} 
         />
-        <button type='submit' className="btn">Update</button>
-        <button type='button' onClick={handleCancelButton} className="btn">Cancel</button>
+        <button type = 'submit' className = "btn">Update</button>
+        <button type = 'button' onClick = {handleCancelButton} className = "btn">Cancel</button>
       </form>
     </div>  
   );
