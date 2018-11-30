@@ -102,7 +102,16 @@ class MainContent extends React.Component {
 
   handleSell(id, quantity) {
     let newKegList = Object.assign({}, this.state.masterKegList);
-    newKegList[id].remaining -= quantity;
+    if (newKegList[id].remaining > quantity) {
+      newKegList[id].remaining -= quantity;
+      this.setState({masterKegList: newKegList});
+    } else if (newKegList[id].remaining < quantity) {
+      alert(`There are not enough pints remaining of ${newKegList[id].name} to make this sale.`);
+    } else {
+      alert(`You've just sold out of ${newKegList[id].name}. Time to replace it.`)
+      delete newKegList[id];
+      this.setState({masterKegList: newKegList});
+    }
     this.setState({masterKegList: newKegList});
   }
 
