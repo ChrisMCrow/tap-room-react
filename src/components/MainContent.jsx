@@ -117,7 +117,7 @@ class MainContent extends React.Component {
 
   handleDelete(id) {
     let newKegList = Object.assign({}, this.state.masterKegList);
-    if (confirm(`Are you sure you want to delete ${newKegList[id].name}?`)) {
+    if (confirm(`Are you sure you want to delete ${newKegList[id].name}? All data will be lost.`)) {
       delete newKegList[id];
       this.setState({masterKegList: newKegList});
     }

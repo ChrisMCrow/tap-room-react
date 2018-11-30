@@ -15,7 +15,7 @@ function HappyHour() {
           color: rgb(196, 179, 179);
           padding: 30px;
           margin: 0;
-          height: 88px;
+          height: 87px;
 
           position: absolute;
           top: -88px;
