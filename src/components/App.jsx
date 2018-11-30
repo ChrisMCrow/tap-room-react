@@ -2,7 +2,6 @@ import React from 'react';
 import bgImage from '../assets/img/TapRoomBG1.jpg';
 import MainContent from './MainContent';
 import HappyHour from './HappyHour';
-import { Switch, Route } from 'react-router-dom';
 
 function App() {
   return(
@@ -51,10 +50,6 @@ function App() {
       `}</style>
       <div>
         <h1 className='jumbotron'>The Tap Room</h1>
-        <Switch>
-          <Route exact path='/'/>
-          <Route path='/happyHour' component={HappyHour}/>
-        </Switch>
         <div className='mainContent'>
           <MainContent/>
         </div>

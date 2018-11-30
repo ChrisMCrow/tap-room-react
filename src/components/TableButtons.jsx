@@ -1,7 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function TableButtons() {
+function TableButtons(props) {
+
+  function handleHappyButton() {
+    props.onHappyHour();
+  }
+
   return(
     <div>
       <style jsx>{`
@@ -9,14 +14,19 @@ function TableButtons() {
           margin-right: 15px;
         }        
       `}</style>
-      <Link to='/add'>
-        <button className='btn'>Add New Keg</button>
-      </Link>
-      <Link to='/happyHour'>
-        <button className='btn'>Start Happy Hour</button>
-      </Link>
+      <button className='btn'>Add New Keg</button>
+      {props.happyHourStatus ? (
+        <button onClick={handleHappyButton} className='btn'>End Happy Hour</button>
+      ) : (
+        <button onClick={handleHappyButton} className='btn'>Start Happy Hour</button>
+      )}
     </div>
   );
+}
+
+TableButtons.propTypes = {
+  happyHourStatus: PropTypes.bool,
+  onHappyHour: PropTypes.func
 }
 
 export default TableButtons;

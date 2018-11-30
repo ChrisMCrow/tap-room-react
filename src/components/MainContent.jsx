@@ -1,9 +1,10 @@
 import React from 'react';
 import Keg from './Keg';
 // import AddForm from './AddForm';
-// import TableButtons from './TableButtons';
+import TableButtons from './TableButtons';
 // import TableButtonsHappy from './TableButtonsHappy';
 import EditForm from './EditForm';
+import HappyHour from './HappyHour';
 
 class MainContent extends React.Component {
 
@@ -60,11 +61,13 @@ class MainContent extends React.Component {
           remaining: '58'
         }
       },
-      selectedKeg: null
+      selectedKeg: null,
+      happyHour: false,
     };
     this.newKeg = false;
     this.handleSelectedKeg = this.handleSelectedKeg.bind(this);
     this.handleUpdatedKeg = this.handleUpdatedKeg.bind(this);
+    this.handleHappyHour = this.handleHappyHour.bind(this);
   }
 
   handleSelectedKeg(kegId) {
@@ -83,6 +86,17 @@ class MainContent extends React.Component {
       this.setState({masterKegList: newKegList});
       this.setState({selectedKeg: newSelectedKeg});
     }
+  }
+
+  handleHappyHour() {
+    let status = new Boolean(this.state.happyHour);
+    let newStatus;
+    if (status == false) {
+      newStatus = true;
+    } else {
+      newStatus = false;
+    }
+    this.setState({happyHour: newStatus});
   }
 
   render() {
@@ -108,6 +122,11 @@ class MainContent extends React.Component {
             margin-right: 15px;
           }        
         `}</style>
+        {this.state.happyHour ? (
+          <HappyHour />
+        ) : (
+          null
+        )}
         <table className='table'>
           <thead className='thead'>
             <tr className='table-headers'>
@@ -154,6 +173,10 @@ class MainContent extends React.Component {
       return (
         <div style={contentStyle}>
           {mainRenderedContent}
+          <TableButtons 
+            happyHourStatus = {this.state.happyHour}
+            onHappyHour = {this.handleHappyHour}
+          />
         </div>
       );
     }
