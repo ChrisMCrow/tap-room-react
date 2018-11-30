@@ -45,9 +45,9 @@ function Keg(props) {
         <div className='dropdown'>
           <button className='btn dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Sell</button>
           <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-            <a href='#' className='dropdown-item'>Pint</a>
-            <a href='#' className='dropdown-item'>Growler</a>
-            <a href='#' className='dropdown-item'>Large Growler</a>
+            <a onClick={() => {props.onSell(props.id, 1)}} className='dropdown-item'>Pint</a>
+            <a onClick={() => {props.onSell(props.id, 2)}} className='dropdown-item'>Growler</a>
+            <a onClick={() => {props.onSell(props.id, 4)}} className='dropdown-item'>Large Growler</a>
           </div>
         </div>
       </td>
@@ -62,11 +62,12 @@ Keg.propTypes = {
   description: PropTypes.string,
   abv: PropTypes.string,
   price: PropTypes.string,
-  remaining: PropTypes.string,
+  remaining: PropTypes.number,
+  id: PropTypes.string,
   onSelectedKeg: PropTypes.func,
   selectedKeg: PropTypes.string,
   happyHour: PropTypes.bool,
-  id: PropTypes.string
+  onSell: PropTypes.func
 };
 
 export default Keg;

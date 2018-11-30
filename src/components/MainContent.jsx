@@ -67,6 +67,7 @@ class MainContent extends React.Component {
     this.handleSelectedKeg = this.handleSelectedKeg.bind(this);
     this.handleUpdatedKeg = this.handleUpdatedKeg.bind(this);
     this.handleHappyHour = this.handleHappyHour.bind(this);
+    this.handleSell = this.handleSell.bind(this);
   }
 
   handleSelectedKeg(kegId) {
@@ -96,6 +97,12 @@ class MainContent extends React.Component {
       newStatus = false;
     }
     this.setState({happyHour: newStatus});
+  }
+
+  handleSell(id, quantity) {
+    let newKegList = Object.assign({}, this.state.masterKegList);
+    newKegList[id].remaining -= quantity;
+    this.setState({masterKegList: newKegList});
   }
 
   render() {
@@ -148,10 +155,11 @@ class MainContent extends React.Component {
                 abv={keg.abv}
                 price={keg.price}
                 remaining={keg.remaining}
+                id={kegId}
                 onSelectedKeg={this.handleSelectedKeg}
                 selectedKeg = {this.state.selectedKeg}
                 happyHour = {this.state.happyHour}
-                id={kegId}
+                onSell = {this.handleSell}
                 key={kegId}
               />;
             })}
